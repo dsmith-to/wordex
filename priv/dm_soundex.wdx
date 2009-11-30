@@ -1,0 +1,56 @@
+alpha  = [A-Z]
+vowel  = [AEIOU]
+
+dm_ai  =  A[IJY]
+dm_au  =  AU
+dm_a_ogonek = \104
+dm_cz  =  CS|CZ|CSZ|CZS
+dm_drz =  DS|DZ|DRZ|DRS|DSH|DSZ|DZH|DZS
+dm_d   =  D|DT
+
+dm_soundex ->
+         ^(dm_ai)       -> "0"
+     vowel(dm_ai)       -> "1"
+          (dm_ai)       -> nc
+         ^(dm_au)       -> "0"
+     vowel(dm_au)       -> "7"
+          (dm_au)       -> nc
+         ^(dm_a_ogonek) -> nc
+     vowel(dm_a_ogonek) -> nc
+          (dm_a_ogonek) -> [nc,"6"]
+         ^(A)             -> "0"
+          (A)             -> nc
+          (B)             -> "7"
+         ^(SHC)           -> "5"
+          (SHC)           -> "54"
+          (CH)            -> ["5","4"]
+          (CK)            -> ["5","54"]
+          (dm_cz)       -> "4"
+          (C)             -> ["5","4"]
+          (dm_drz)      -> "4"
+          (dm_d         -> "3"
+         ^(dm_ei)       -> "0"
+     vowel(dm_ei)       -> "1"
+          (dm_ei)       -> nc
+         ^(dm_eu)       -> "1"
+     vowel(dm_eu)       -> "1"
+          (dm_eu)       -> nc
+         ^(dm_e_ogonek) -> nc
+     vowel(dm_e_ogonek) -> nc
+          (dm_e_ogonek) -> [nc,"6"]
+         ^(E)             -> "0"
+          (E)             -> nc
+          (FB|F)          -> "7"
+          (G)             -> "5"
+         ^(H)             -> "5"
+     vowel(H)           -> "5"
+          (H)             -> nc
+          (dm_ia)       -> "1"
+          (dm_ia)       -> nc
+         ^(I)             -> "0"
+          (I)             -> nc
+          
+          (Z)           -> "4"
+ 
+
+        

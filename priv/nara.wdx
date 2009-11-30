@@ -1,0 +1,33 @@
+alpha  = [A-Z]
+vowel  = [AEIOU]
+
+nara_all = alpha|[, ]
+nara_nc  = vowel|[HWY]
+nara_1   = [BPFV]
+nara_2   = [CSKGJQXZ]
+nara_3   = [DT]
+nara_4   = [L]
+nara_5   = [MN]
+nara_6   = [R]
+
+nara_soundex.
+  ^(alpha)    : {cap, 1}
+   (nara_nc)  : nc
+   (nara_1)   : $1
+   (nara_2)   : $2
+   (nara_3)   : $3
+   (nara_4)   : $4
+   (nara_5)   : $5
+   (nara_6)   : $6
+
+
+nara_soundex(nc, Out, _) ->
+   Out; 
+nara_soundex({cap, N}, Out, Captured) ->
+   [lists:nth(Captured, N)|Out]; 
+nara_soundex(Term, Out, _) when is_list(Term) ->
+   [Term|Out];
+nara_soundex(Term, Out, _) when is_integer(Term) ->
+   [Term|Out].
+
+   
